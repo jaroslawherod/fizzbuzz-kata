@@ -42,6 +42,16 @@ public class FizzBuzzTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {15, 30, 45, 60})
+    public void shouldReturnFizzBuzzWhenNumberMultiplicationOfThreeAndFive(int number) {
+        String string = fizzBuzz.play(number);
+
+        assertEquals("FizzBuzz", string);
+    }
+
+
+
+    @ParameterizedTest
     @ValueSource(ints = {-1, 0, 100, 200})
     public void shouldThrowExceptionWhenInputParameterIsNotInScope(int number) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> fizzBuzz.play(number));
