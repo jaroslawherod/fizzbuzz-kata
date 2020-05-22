@@ -1,11 +1,13 @@
 package io.c8y;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.platform.commons.util.ExceptionUtils;
 
 public class FizzBuzzTest {
 
@@ -32,12 +34,16 @@ public class FizzBuzzTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {5, 10, 15, 20})
-    public void  shouldReturnBuzzWhenNumberMultiplicationOfFive(int number) {
+    @ValueSource(ints = {5, 10, 20})
+    public void shouldReturnBuzzWhenNumberMultiplicationOfFive(int number) {
         String string = fizzBuzz.play(number);
 
         assertEquals("Buzz", string);
     }
 
-    
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 100, 200})
+    public void shouldThrowExceptionWhenInputParameterIsNotInScope(int number) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> fizzBuzz.play(number));
+    }
 }
