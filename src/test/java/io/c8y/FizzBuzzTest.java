@@ -31,5 +31,13 @@ public class FizzBuzzTest {
         assertEquals("Fizz", string);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 15, 20})
+    public void  shouldReturnBuzzWhenNumberMultiplicationOfFive(int number) {
+        String string = fizzBuzz.play(number);
+
+        assertEquals("Buzz", string);
+    }
+
     
 }
