@@ -7,8 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FizzBuzzTest {
 
     @Test
-    public void goodPlaceToStart(){
-        assertTrue( true );
+    public void shouldReturnANumberWhenItsNotFizzOrBuzz(){
+        FizzBuzz fizzBuzz = new FizzBuzz();
+
+        String result =  fizzBuzz.play(7);
+
+        assertEquals( result, "7" );
     }
 
 }
